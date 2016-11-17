@@ -2,7 +2,7 @@
 var args = process.argv.slice(2);
 
 if (args.length != 2) {
-    console.error("Usage: node publisher.js PORT_CLIENT PORT_SERVER");
+    console.error("Usage: node rrbroker.js PORT_CLIENT PORT_SERVER");
     process.exit();
 }
 

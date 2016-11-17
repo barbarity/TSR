@@ -4,7 +4,7 @@
 var args = process.argv.slice(2);
 
 if (args.length != 3) {
-    console.error("Usage: node hwserver.js ENDPOINT WAIT_TIME RESPONSE");
+    console.error("Usage: node rrworker.js ENDPOINT WAIT_TIME RESPONSE");
     process.exit();
 }
 
@@ -13,7 +13,7 @@ var wait_time = parseInt(args[1]);
 var response = args[2];
 
 var zmq = require('zmq')
-  , responder = zmq.socket('rep');
+  , responder = zmq.socket('req');
 
 responder.connect(endpoint);
 responder.on('message', function(msg) {
