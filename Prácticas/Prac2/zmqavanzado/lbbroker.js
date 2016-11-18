@@ -37,12 +37,11 @@ frontend.on('message', function() {
 
     var worker_id = selectWorker();
 
-    console.log(worker_id)
-
     if (worker_id) {
         sendJobToWorker(worker_id, args);
     } else {
         sendJobToQueue(args);
+        console.log(pending_works);
     }
 
 
@@ -82,8 +81,8 @@ backend.on('message', function() {
             response = args.slice(2);
             logVerbose('sending worker (' + worker_id + ') rep to client ( ' + client_id + ' ) through frontend', false);
             if(isVerbose) auxfunctions.showArguments(response);
-            frontend.send(response);
             workers[worker_id].jobsCount++;
+            frontend.send(response);
 
             break;            
     }
